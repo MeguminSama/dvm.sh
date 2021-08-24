@@ -72,6 +72,8 @@ _dvm_get_branch_specifier() {
     # $1 = branch
     if [ "$1" = "stable" ]; then
         echo ""
+    elif [ "$1" = "development" ]; then
+        echo "Development"
     elif [ "$1" = "canary" ]; then
         echo "Canary"
     elif [ "$1" = "ptb" ]; then
@@ -319,12 +321,15 @@ _dvm_list() {
     local stable_version
     local ptb_version
     local canary_version
+    local development_version
     stable_version=$(_dvm_get_version stable)
     ptb_version=$(_dvm_get_version ptb)
     canary_version=$(_dvm_get_version canary)
+    development_version=$(_dvm_get_version development)
     printf "stable - %s\n" $stable_version
     printf "ptb    - %s\n" $ptb_version
     printf "canary - %s\n" $canary_version
+    printf "development - %s\n" $development_version
 }
 
 _dvm_desktop() {
